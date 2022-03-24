@@ -1,0 +1,297 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+:root {
+    /* Neutral colors */
+    --Very-Light-Grayish-Blue: hsl(240, 78%, 98%);
+    --Light-Grayish-Blue: hsl(234, 14%, 74%);
+    --Grayish-Blue: hsl(233, 13%, 49%);
+    --Dark-Grayish-Blue: hsl(232, 13%, 33%);
+    --white: hsl(0, 0%, 100%);
+    /* Linear Gradient:  */
+    --grad-dark: hsl(236, 72%, 79%);
+    --grad-darkest: hsl(237, 63%, 64%);
+    /* Container max width */
+    --max-width: 1100px;
+}
+
+/* CSS Reset Start */
+
+* {
+    padding: 0;
+    margin: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    list-style: none;
+    list-style-type: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+html, body, div, span, h1, h2, h3, h4 {
+    font-size: 100%;
+	font: inherit;
+}
+
+/* CSS Reset End */
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.6;
+    text-align: center;
+    color: var(--Dark-Grayish-Blue);
+}
+
+/* main block for all card items */
+.component {
+    width: 100%;
+    background: url('../images/bg-top.svg') right -200px top 0, url('../images/bg-bottom.svg') right 0 bottom 0, var(--Very-Light-Grayish-Blue);
+    background-repeat: no-repeat;
+    background-size: auto;
+    padding: 4vh;
+}
+
+/* title for main component */
+.component__title {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--Grayish-Blue);
+    padding: 4vh 0 3vh;
+}
+
+/* toggle switch block between monthly/annualy pricing | monthly set as default */
+.component__toggle {
+    color: var(--Light-Grayish-Blue);
+    margin: 0 0 8vh;
+}
+
+/* display property for pricing names */
+.toggle__name {
+    display: inline-block;
+}
+
+/* toggle checkbox dimensions */
+.checkbox__label {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 26px;
+    margin: 0 20px;
+}
+
+/* toggle checkbox hide | selecting through label */
+.checkbox__input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* background for toggle */
+.checkbox__toggle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--grad-dark);
+    border-radius: 50px;
+    -webkit-transition: .3s;
+    transition: .3s;
+    cursor: pointer;
+}
+
+/* background for toggle hover state */
+.checkbox__toggle:hover {
+    background-color: var(--Dark-Grayish-Blue);
+}
+
+/* background for toggle hover state */
+.checkbox__input:checked:hover + .checkbox__toggle {
+    background-color: var(--Dark-Grayish-Blue);
+}
+
+/* checkbox toggle position */
+.checkbox__toggle::before {
+    position: absolute;
+    content: '';
+    width: 20px;
+    height: 20px;
+    left: 4px;
+    bottom: 3px;
+    background-color: var(--white);
+    border-radius: 50%;
+    -webkit-transition: .3s;
+    transition: .3s;
+}
+
+/* checkbox toggle position change | translate x after select */
+.checkbox__input:checked + .checkbox__toggle::before {
+    transform: translateX(23px);
+}
+
+/* checkbox toggle background change when selected */
+.checkbox__input:checked + .checkbox__toggle {
+    background-color: var(--grad-darkest);
+}
+
+/* cards block */
+.component__cards {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* card block */
+.component__card {
+    width: 100%;
+    max-width: 350px;
+    padding: 5vh 4vh;
+    margin: 6vh 0;
+    background-color: var(--white);
+    border-radius: 10px;
+    -webkit-box-shadow: 0px 0px 20px -8px rgba(176, 176, 176, 1);
+    -moz-box-shadow: 0px 0px 20px -8px rgba(176, 176, 176, 1);
+    box-shadow: 0px 0px 20px -8px rgba(176, 176, 176, 1);
+}
+
+/* extra style for the card block | promo | CTA | mostly selected */
+.component__card--promo {
+    color: var(--Very-Light-Grayish-Blue);
+    background: rgb(163,168,240);
+    background: -moz-linear-gradient(180deg, rgba(163,168,240,1) 0%, rgba(105,111,221,1) 100%);
+    background: -webkit-linear-gradient(180deg, rgba(163,168,240,1) 0%, rgba(105,111,221,1) 100%);
+    background: linear-gradient(180deg, rgba(163,168,240,1) 0%, rgba(105,111,221,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#a3a8f0",endColorstr="#696fdd",GradientType=1); 
+}
+
+/* extra style for the card block title | promo | CTA | mostly selected */
+.component__card--promo > .card__title {
+    color: var(--Very-Light-Grayish-Blue);
+}
+
+/* title element inside the card block */
+.card__title {
+    color: var(--Grayish-Blue);
+}
+
+/* pricing elements inside the card block */
+.card__price--monthly, .card__price--yearly {
+    position: relative;
+    font-size: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* extra style for dollar sign before price inside the card block  */
+.card__dollar {
+    font-size: 38px;
+}
+
+/* display set to none for annual pricing inside the card block  */
+.card__price--monthly.disabled, .card__price--yearly.disabled {
+    display: none;
+}
+
+/* listing details for every pricing plan inside the card block  */
+.card__list {
+    margin: 1vh 0 6vh;
+}
+
+/* styling items inside the card block */
+.card__list > .list__item {
+    padding: 2vh 0;
+    border-bottom: 1px solid var(--Light-Grayish-Blue);
+}
+
+/* styling first item inside the card block | border top property */
+.card__list > .list__item:first-of-type {
+    border-top: 1px solid var(--Light-Grayish-Blue);
+}
+
+/* button block */
+/* button to reuse anywhere */
+.card__button {
+    display: block;
+    color: var(--Very-Light-Grayish-Blue);
+    letter-spacing: 0.15rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 10px 0;
+    border-radius: 5px;
+    border: 1px solid;
+    transition: .3s ease-in-out;
+}
+
+/* button block hover state */
+.card__button:hover {
+    color: var(--Dark-Grayish-Blue);
+    background: transparent;
+    border: 1px solid var(--Dark-Grayish-Blue);
+}
+
+/* modifier for a button inside the card block */
+.card__button--primary {
+    background: rgb(163,168,240);
+    background: -moz-linear-gradient(90deg, rgba(163,168,240,1) 0%, rgba(105,111,221,1) 100%);
+    background: -webkit-linear-gradient(90deg, rgba(163,168,240,1) 0%, rgba(105,111,221,1) 100%);
+    background: linear-gradient(90deg, rgba(163,168,240,1) 0%, rgba(105,111,221,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#a3a8f0",endColorstr="#696fdd",GradientType=1); 
+}
+
+/* modifier for a button inside the card block */
+/* extra properties just for PROMO CTA inside the card block */
+.card__button--promo {
+    color: var(--Grayish-Blue);
+    background-color: var(--Very-Light-Grayish-Blue);
+}
+
+/* extra styling for PROMO | CTA | inside the card block */
+.card__button--promo:hover {
+    color: var(--white);
+    border: 1px solid var(--white);
+}
+
+@media only screen and (min-width: 768px) {
+    /* cards block | direction to row on desktop */
+    .component__cards {
+        flex-direction: row;
+    }
+
+    /* extra style for PROMO | CTA card inside the card block */
+    .component__card:nth-of-type(2) {
+        min-height: 540px;
+        padding-top: 8.2vh;
+    }
+
+    /* main block for all card items | background change on desktop */
+    .component {
+        width: 100%;
+        background: url('../images/bg-top.svg') right 0 top 0, url('../images/bg-bottom.svg') left 0 bottom 0, var(--Very-Light-Grayish-Blue);
+        background-repeat: no-repeat;
+        background-size: auto;
+        padding: 4vh;
+    }
+}
+
+/* Attribution section */
+.attribution {
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    color: #000;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 4vh 0;
+}
+.attribution > p > a {
+    color: #000;
+}
+.attribution > p {
+    padding-bottom: 0;
+    margin-bottom: 5px;
+}
